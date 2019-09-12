@@ -5,18 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kheynes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/11 16:01:21 by kheynes           #+#    #+#             */
-/*   Updated: 2019/09/11 16:07:31 by kheynes          ###   ########.fr       */
+/*   Created: 2019/09/12 09:47:06 by kheynes           #+#    #+#             */
+/*   Updated: 2019/09/12 09:47:42 by kheynes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.a"
-#include <stdio.h>
+#include "libft/libft.h"
 
-int main(int ac, char **av)
+int main()
 {
-    char *line;
     
-    get_next_line(0, &line);
-    return (0);
 }
