@@ -6,14 +6,14 @@
 /*   By: kheynes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 10:46:01 by kheynes           #+#    #+#             */
-/*   Updated: 2019/09/23 11:12:42 by kheynes          ###   ########.fr       */
+/*   Updated: 2019/09/24 13:11:18 by kheynes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include <stdio.h>
 
-int	main(void)
+int	main(int ac, char **av)
 {
 	char	*line;
 	int		ret;
@@ -22,7 +22,12 @@ int	main(void)
 
 	count = 0;
 	ret = 1;
-	fd = open("test.txt", O_RDONLY);
+	if (ac != 2)
+	{
+		printf("No file specified !!\n");
+		return (0);
+	}
+	fd = open(av[1], O_RDONLY);
 	while ((ret = get_next_line(fd, &line) > 0))
 	{
 		free(line);
