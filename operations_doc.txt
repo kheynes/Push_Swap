@@ -17,7 +17,3 @@ becomes the first one.
 rrb : reverse rotate b - shift down all elements of stack b by 1. The last element
 becomes the first one.
 rrr : rra and rrb at the same time.
-
-
-ARG=`ruby -e "puts (0..99).to_a.shuffle.join(' ')"`; ./push_swap $ARG | ./checker $ARG === Single string output
-ARG=`ruby -e "puts (0..99).to_a.shuffle"`; ./push_swap $ARG | ./checker $ARG === Multiple outputs per number
