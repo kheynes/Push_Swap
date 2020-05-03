@@ -26,7 +26,9 @@ typedef struct      s_stack
 }                   t_stack;
 
 //operations
+void        sa(t_stack **stack_a, int i);
 
 //validation
+int         check_size(t_stack **top);
 
 #endif

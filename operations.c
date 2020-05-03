@@ -24,5 +24,9 @@ void    sa(t_stack **stack_a, int i)
     second = (*stack_a)->next;
     first->prev = second;
     first->next = second->next;
-    
+    second->prev = NULL;
+    second->next = first;
+    *stack_a = second;
+    if (i == 1 || i == 4 || i == 5 || i == 7)
+        write (1, "sa\n", 3);
 }
