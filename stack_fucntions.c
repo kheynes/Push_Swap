@@ -15,7 +15,7 @@
 
 t_stack*    newNode(int data)
 {
-    t_stack* stackNode = NULL;
+    t_stack*    stackNode;
 
     stackNode = (t_stack*)malloc(sizeof(t_stack));
     stackNode->data = data;
@@ -30,7 +30,7 @@ int         isEmpty(t_stack* root)
 
 void        push(t_stack** root, int data)
 {
-    t_stack* stackNode = NULL;
+    t_stack*    stackNode;
 
     stackNode = newNode(data);
     stackNode->next = *root;
@@ -39,8 +39,8 @@ void        push(t_stack** root, int data)
 
 int         pop(t_stack** root)
 {
-    t_stack* temp = NULL;
-    int popped = 0;
+    t_stack*    temp;
+    int         popped;
 
     temp = *root;
     *root = (*root)->next;

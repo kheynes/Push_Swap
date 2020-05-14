@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
 int main(int ac, char **av)
 {
@@ -20,18 +21,20 @@ int main(int ac, char **av)
         exit(1);
     }
 
+    char        **str;
+    int         i;
+    t_stack*    stack_a;
 
-    ar[] = ft_strsplit(av[1], ' ');
-    int i = 0;
-    t_stack* stack_a = NULL;
-    while(ar)
+    str = ft_strsplit(av[1], ' ');
+    i = 0;
+    stack_a = NULL;
+
+    while (str[i])
     {
-        push(&stack_a, ar[i]);
+        push(&stack_a, ft_atoi(str[i]));
         i++;
     }
-
     print_stack(stack_a);
-    write(1, "\n", 1);
 
     return 0;
 }
