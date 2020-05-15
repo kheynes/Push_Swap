@@ -11,30 +11,72 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <fcntl.h>
 #include <stdio.h>
 
-int main(int ac, char **av)
+int      main(int ac, char **av)
 {
-    if (ac != 2)
-    {
-        write(1, "\n", 1);
-        exit(1);
-    }
+	char    **line;
+	int     fd = 0;
 
-    char        **str;
-    int         i;
-    t_stack*    stack_a;
+	if (ac < 2)
+	{
+		write(1, "\n", 1);
+		exit(1);
+	}
 
-    str = ft_strsplit(av[1], ' ');
-    i = 0;
-    stack_a = NULL;
+	char        **str;
+	int         i;
+	t_stack*    stack_a;
+	t_stack*    stack_b;
 
-    while (str[i])
-    {
-        push(&stack_a, ft_atoi(str[i]));
-        i++;
-    }
-    print_stack(stack_a);
+	str = ft_strsplit(av[1], ' ');
+	i = 0;
+	stack_a = NULL;
+	stack_b = NULL;
 
-    return 0;
+	while (str[i])
+	{
+		push(&stack_a, ft_atoi(str[i]));
+		i++;
+	}
+	print_stack(stack_a);
+
+	line = ft_memalloc(sizeof(char **));
+	while ((get_next_line(fd, line)) > 0)
+	{
+		if (ft_strequ(*line, "sa"))
+			swap(&stack_a);
+		else if (ft_strequ(*line, "sb"))
+			swap(&stack_b);
+		else if (ft_strequ(*line, "ss"))
+		{
+			swap(&stack_a);
+			swap(&stack_b);
+		}
+		else if (ft_strequ(*line, "pa"))
+			push_op(&stack_b, &stack_a);
+		else if (ft_strequ(*line, "pb"))
+			push_op(&stack_a, &stack_b);
+		else if (ft_strequ(*line, "ra"))
+			printf("rotate a\n");
+		else if (ft_strequ(*line, "rb"))
+			printf("rotate b\n");
+		else if (ft_strequ(*line, "rr"))
+			printf("rotate a and rotate b\n");
+		else if (ft_strequ(*line, "rra"))
+			printf("reverse rotate a\n");
+		else if (ft_strequ(*line, "rrb"))
+			printf("reverse rotate b\n");
+		else if (ft_strequ(*line, "rrr"))
+			printf("reverse rotate a and reverse rotate b\n");
+		else
+			ft_putstr("\033[0;31mInvalid Command!\n\033[0m");
+		
+		print_stack(stack_a);
+		ft_putstr("---\n");
+		print_stack(stack_b);
+	}
+
+	return 0;
 }

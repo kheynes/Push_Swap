@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 t_stack*    newNode(int data)
 {
@@ -55,7 +54,8 @@ void        print_stack(t_stack* root)
     t_stack* currentNode = root;
     while (currentNode != NULL)
     {
-        printf("%d", currentNode->data);
+        ft_putnbr(currentNode->data);
+        ft_putstr("\n");
         currentNode = currentNode->next;
     }
 }
