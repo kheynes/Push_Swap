@@ -12,26 +12,10 @@
 
 #include "push_swap.h"
 
-int		size(t_stack **root)
-{
-	int			i;
-	t_stack*	temp;
-
-	i = 0;
-	temp = *root;
-	
-	while(temp)
-	{
-		i++;
-		temp = temp->next;
-	}
-	return(i);
-}
-
 void		swap(t_stack** stack)
 {
-	int first;
-	int second;
+	int			first;
+	int			second;
 
 	if (size(stack) < 2)
 		return ;
@@ -44,11 +28,54 @@ void		swap(t_stack** stack)
 
 void		push_op(t_stack** from, t_stack** to)
 {
-	int top;
+	int			top;
 
 	if (size(from) < 1)
 		return ;
 	
 	top = pop(from);
 	push(to, top);
+}
+
+void		rotate(t_stack** stack)
+{
+	if (size(stack) < 2)
+		return ;
+	
+	t_stack*	first;
+	t_stack*	end;
+
+	first = *stack;
+	end = *stack;
+
+	while(end->next != NULL)
+	{
+		end = end->next;
+	}
+
+	*stack = (*stack)->next;
+	end->next = first;
+	first->next = NULL;
+}
+
+void		reverse_rotate(t_stack** stack)
+{
+	if (size(stack) < 2)
+		return ;
+
+	t_stack*	secondLast;
+	t_stack*	last;
+
+	secondLast = NULL;
+	last = *stack;
+
+	while(last->next != NULL)
+	{
+		secondLast = last;
+		last = last->next;
+	}
+
+	secondLast->next = NULL;
+	last->next = *stack;
+	*stack = last;
 }

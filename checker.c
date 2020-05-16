@@ -59,17 +59,23 @@ int      main(int ac, char **av)
 		else if (ft_strequ(*line, "pb"))
 			push_op(&stack_a, &stack_b);
 		else if (ft_strequ(*line, "ra"))
-			printf("rotate a\n");
+			rotate(&stack_a);
 		else if (ft_strequ(*line, "rb"))
-			printf("rotate b\n");
+			rotate(&stack_b);
 		else if (ft_strequ(*line, "rr"))
-			printf("rotate a and rotate b\n");
+		{
+			rotate(&stack_a);
+			rotate(&stack_b);
+		}
 		else if (ft_strequ(*line, "rra"))
-			printf("reverse rotate a\n");
+			reverse_rotate(&stack_a);
 		else if (ft_strequ(*line, "rrb"))
-			printf("reverse rotate b\n");
+			reverse_rotate(&stack_b);
 		else if (ft_strequ(*line, "rrr"))
-			printf("reverse rotate a and reverse rotate b\n");
+		{
+			reverse_rotate(&stack_a);
+			reverse_rotate(&stack_b);
+		}
 		else
 			ft_putstr("\033[0;31mInvalid Command!\n\033[0m");
 		

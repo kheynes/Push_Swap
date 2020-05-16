@@ -28,17 +28,18 @@ typedef struct      	s_stack
 /* *************** */
 
 t_stack*    newNode(int data);
-int         isEmpty(t_stack* root);
 void        push(t_stack** root, int data);
 int         pop(t_stack** root);
+int         size(t_stack** root);
 void        print_stack(t_stack* root);
 
 /* ********** */
 /* operations */
 /* ********** */
 
-int         size(t_stack** root);
 void        swap(t_stack** stack);
 void        push_op(t_stack** from, t_stack** to);
+void        rotate(t_stack** stack);
+void        reverse_rotate(t_stack** stack);
 
 #endif

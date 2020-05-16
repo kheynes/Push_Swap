@@ -22,11 +22,6 @@ t_stack*    newNode(int data)
     return stackNode;
 }
 
-int         isEmpty(t_stack* root)
-{
-    return !root;
-}
-
 void        push(t_stack** root, int data)
 {
     t_stack*    stackNode;
@@ -47,6 +42,22 @@ int         pop(t_stack** root)
     free(temp);
 
     return popped;
+}
+
+int		size(t_stack **root)
+{
+	int			i;
+	t_stack*	temp;
+
+	i = 0;
+	temp = *root;
+	
+	while(temp)
+	{
+		i++;
+		temp = temp->next;
+	}
+	return(i);
 }
 
 void        print_stack(t_stack* root)
