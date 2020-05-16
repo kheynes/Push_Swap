@@ -45,6 +45,7 @@ void	make_stack(t_stack** stack, char **str)
 
 	while(array[i])
 	{
+		is_integer(array[i]);
 		push(stack, ft_atoi(array[i]));
 		i++;
 	}
@@ -75,8 +76,8 @@ void	perform_op(char **line, t_stack** stack_a, t_stack** stack_b)
 			reverse_rotate(stack_b);
 		else if (ft_strequ(*line, "rrr"))
 			reverse_rotate_both(stack_a, stack_b);	
-		else //can delete from here 
-			ft_putstr("\033[0;31mInvalid Command!\n\033[0m");
+		else 
+			invalid_command();
 		
 		print_stack(*stack_a);
 		ft_putstr("---\n");
@@ -106,6 +107,7 @@ int		main(int ac, char **av)
 	stack_b = NULL;
 	
 	make_stack(&stack_a, &av[1]);
+	is_duplicate(&stack_a);
 	print_stack(stack_a);
 
 	// line = ft_memalloc(sizeof(char **));

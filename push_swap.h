@@ -53,4 +53,12 @@ int			check_stack(t_stack** stack_a, t_stack** stack_b);
 void		make_stack(t_stack** stack, char **str);
 void		run_check(t_stack** stack_a, t_stack** stack_b);
 
+/* ************** */ 
+/* error_handling */
+/* ************** */
+
+void		invalid_command(void);
+void		is_duplicate(t_stack** stack_a);
+void		is_integer(char *str);
+
 #endif
