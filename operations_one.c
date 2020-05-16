@@ -39,11 +39,11 @@ void		push_op(t_stack** from, t_stack** to)
 
 void		rotate(t_stack** stack)
 {
-	if (size(stack) < 2)
-		return ;
-	
 	t_stack*	first;
 	t_stack*	end;
+
+	if (size(stack) < 2)
+		return ;
 
 	first = *stack;
 	end = *stack;
@@ -60,11 +60,11 @@ void		rotate(t_stack** stack)
 
 void		reverse_rotate(t_stack** stack)
 {
-	if (size(stack) < 2)
-		return ;
-
 	t_stack*	secondLast;
 	t_stack*	last;
+
+	if (size(stack) < 2)
+		return ;
 
 	secondLast = NULL;
 	last = *stack;

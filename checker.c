@@ -14,75 +14,107 @@
 #include <fcntl.h>
 #include <stdio.h>
 
-int      main(int ac, char **av)
+int		check_stack(t_stack** stack_a, t_stack** stack_b)
 {
-	char    **line;
-	int     fd = 0;
-
-	if (ac < 2)
+	if (size(stack_b) > 0)
 	{
-		write(1, "\n", 1);
-		exit(1);
+		return(0);
+	}
+	else
+	{
+		while ((*stack_a)->next != NULL)
+		{
+			if ((*stack_a)->next->data > (*stack_a)->data)
+				*stack_a = (*stack_a)->next;
+			else
+			{
+				return(0);
+			}
+		}
+	}
+	return(1);
+}
+
+void	make_stack(t_stack** stack, char **str)
+{
+	char	**array;
+	int		i;
+
+	array = ft_strsplit(*str, ' ');
+	i = 0;
+
+	while(array[i])
+	{
+		push(stack, ft_atoi(array[i]));
+		i++;
 	}
 
-	char        **str;
-	int         i;
+}
+
+void	perform_op(char **line, t_stack** stack_a, t_stack** stack_b)
+{
+		if (ft_strequ(*line, "sa"))
+			swap(stack_a);
+		else if (ft_strequ(*line, "sb"))
+			swap(stack_b);
+		else if (ft_strequ(*line, "ss"))
+			swap_both(stack_a, stack_b);
+		else if (ft_strequ(*line, "pa"))
+			push_op(stack_b, stack_a);
+		else if (ft_strequ(*line, "pb"))
+			push_op(stack_a, stack_b);
+		else if (ft_strequ(*line, "ra"))
+			rotate(stack_a);
+		else if (ft_strequ(*line, "rb"))
+			rotate(stack_b);
+		else if (ft_strequ(*line, "rr"))
+			rotate_both(stack_a, stack_b);
+		else if (ft_strequ(*line, "rra"))
+			reverse_rotate(stack_a);
+		else if (ft_strequ(*line, "rrb"))
+			reverse_rotate(stack_b);
+		else if (ft_strequ(*line, "rrr"))
+			reverse_rotate_both(stack_a, stack_b);	
+		else //can delete from here 
+			ft_putstr("\033[0;31mInvalid Command!\n\033[0m");
+		
+		print_stack(*stack_a);
+		ft_putstr("---\n");
+		print_stack(*stack_b);
+}
+
+void	run_check(t_stack** stack_a, t_stack** stack_b)
+{
+	if (check_stack(stack_a, stack_b))
+		ft_putstr("\033[1;32mOK\n\033[0m");
+	else if (!(check_stack(stack_a, stack_b)))
+		ft_putstr("\033[0;31mKO\n\033[0m");
+}
+
+int		main(int ac, char **av)
+{
+	char    	*line[1];
+	int     	fd;
 	t_stack*    stack_a;
 	t_stack*    stack_b;
 
-	str = ft_strsplit(av[1], ' ');
-	i = 0;
+	if (ac < 2)
+		return(0);
+
+	fd = 0;
 	stack_a = NULL;
 	stack_b = NULL;
-
-	while (str[i])
-	{
-		push(&stack_a, ft_atoi(str[i]));
-		i++;
-	}
+	
+	make_stack(&stack_a, &av[1]);
 	print_stack(stack_a);
 
-	line = ft_memalloc(sizeof(char **));
+	// line = ft_memalloc(sizeof(char **));
 	while ((get_next_line(fd, line)) > 0)
 	{
-		if (ft_strequ(*line, "sa"))
-			swap(&stack_a);
-		else if (ft_strequ(*line, "sb"))
-			swap(&stack_b);
-		else if (ft_strequ(*line, "ss"))
-		{
-			swap(&stack_a);
-			swap(&stack_b);
-		}
-		else if (ft_strequ(*line, "pa"))
-			push_op(&stack_b, &stack_a);
-		else if (ft_strequ(*line, "pb"))
-			push_op(&stack_a, &stack_b);
-		else if (ft_strequ(*line, "ra"))
-			rotate(&stack_a);
-		else if (ft_strequ(*line, "rb"))
-			rotate(&stack_b);
-		else if (ft_strequ(*line, "rr"))
-		{
-			rotate(&stack_a);
-			rotate(&stack_b);
-		}
-		else if (ft_strequ(*line, "rra"))
-			reverse_rotate(&stack_a);
-		else if (ft_strequ(*line, "rrb"))
-			reverse_rotate(&stack_b);
-		else if (ft_strequ(*line, "rrr"))
-		{
-			reverse_rotate(&stack_a);
-			reverse_rotate(&stack_b);
-		}
-		else
-			ft_putstr("\033[0;31mInvalid Command!\n\033[0m");
-		
-		print_stack(stack_a);
-		ft_putstr("---\n");
-		print_stack(stack_b);
+		perform_op(line, &stack_a, &stack_b);
 	}
+
+	run_check(&stack_a, &stack_b);
 
 	return 0;
 }
