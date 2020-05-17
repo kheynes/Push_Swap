@@ -46,11 +46,12 @@ void		rotate_both(t_stack** stack_a, t_stack** stack_b);
 void		reverse_rotate_both(t_stack** stack_a, t_stack** stack_b);
 
 /* ******* */
-/* checker */
+/* stack */
 /* ******* */
 
 int			check_stack(t_stack** stack_a, t_stack** stack_b);
 void		make_stack(t_stack** stack, char **str);
+void		perform_op(char **line, t_stack** stack_a, t_stack** stack_b);
 void		run_check(t_stack** stack_a, t_stack** stack_b);
 
 /* ************** */ 
@@ -60,5 +61,11 @@ void		run_check(t_stack** stack_a, t_stack** stack_b);
 void		invalid_command(void);
 void		is_duplicate(t_stack** stack_a);
 void		is_integer(char *str);
+
+/* ********* */
+/* push_swap */
+/* ********* */
+
+void		run_operation(char *str, t_stack** stack_a, t_stack** stack_b);
 
 #endif
