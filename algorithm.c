@@ -69,13 +69,13 @@ void	sort_three(t_stack** stack_a, t_stack** stack_b)
 	{
     	temp = *stack_a;
 
-    	if(temp > temp->next)
+    	if(temp->data > temp->next->data)
     		run_operation("sa", stack_a, stack_b);       	
 
         temp = temp->next;
 		if(!(check_three(stack_a)))
 		{
-        	if(temp > temp->next)
+        	if(temp->data > temp->next->data)
         		run_operation("rra", stack_a, stack_b);
         	else
     			run_operation("ra", stack_a, stack_b);
@@ -91,7 +91,7 @@ void	sort_five(t_stack** stack_a, t_stack** stack_b)
     while (!(check_stack(stack_a, stack_b)) && size(stack_a) > 3)
     {
         i = 0;
-        rotate = largest(stack_a);
+        rotate = smallest(stack_a);
         if (rotate > size(stack_a) / 2)
         {
             while (i++ < size(stack_a) - rotate)
@@ -106,7 +106,6 @@ void	sort_five(t_stack** stack_a, t_stack** stack_b)
         }
     }
 	sort_three(stack_a, stack_b);
-	// run_operation("sb", stack_a, stack_b);
-    // while (size(stack_b) > 0)
-    	// run_operation("pa", stack_a, stack_b);
+    while (size(stack_b) > 0)
+    	run_operation("pa", stack_a, stack_b);
 }
