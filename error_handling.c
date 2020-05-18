@@ -63,3 +63,16 @@ void	is_integer(char *str, t_stack** stack_a)
 		exit(1);
 	}
 }
+
+void	free_array(char **array)
+{
+	int		i;
+
+	i = 0;
+	while(array[i] != NULL)
+	{
+		free(array[i]);
+		i++;
+	}
+	free(array);
+}

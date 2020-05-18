@@ -15,21 +15,19 @@
 int		main(int ac, char **av)
 {
 	char    	*line[1];
-	int     	fd;
 	t_stack*    stack_a;
 	t_stack*    stack_b;
 
 	if (ac < 2)
 		return(0);
 
-	fd = 0;
 	stack_a = NULL;
 	stack_b = NULL;
 	
-	make_stack(&stack_a, &av[1]);
+	make_stack(&stack_a, av, ac);
 	is_duplicate(&stack_a);
 
-	while ((get_next_line(fd, line)) > 0)
+	while ((get_next_line(0, line)) > 0)
 	{
 		perform_op(line, &stack_a, &stack_b);
 		ft_strdel(line);
@@ -39,5 +37,6 @@ int		main(int ac, char **av)
 
 	free_stack(&stack_a);
 	free_stack(&stack_b);
+
 	return 0;
 }

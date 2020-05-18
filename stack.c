@@ -37,14 +37,17 @@ int		check_stack(t_stack** stack_a, t_stack** stack_b)
 	return(1);
 }
 
-void	make_stack(t_stack** stack, char **str)
+void	make_stack(t_stack** stack, char **str, int ac)
 {
 	char	**array;
 	int		i;
 	int		len;
 
-	array = ft_strsplit(*str, ' ');
-	i = 0;
+	if(ac == 2)
+	    array = ft_strsplit(str[1], ' ');
+	else
+    	array = str + 1;
+
 	len = 0;
 
 	while(array[len])
@@ -59,7 +62,8 @@ void	make_stack(t_stack** stack, char **str)
 		push(stack, ft_atoi(array[i]));
 		i--;
 	}
-
+	if(ac == 2)
+		free_array(array);
 }
 
 void	perform_op(char **line, t_stack** stack_a, t_stack** stack_b)
@@ -88,10 +92,6 @@ void	perform_op(char **line, t_stack** stack_a, t_stack** stack_b)
 			reverse_rotate_both(stack_a, stack_b);	
 		else 
 			invalid_command(stack_a, stack_b);
-		
-		print_stack(*stack_a);
-		ft_putstr("---\n");
-		print_stack(*stack_b);
 }
 
 void	run_check(t_stack** stack_a, t_stack** stack_b)
