@@ -59,9 +59,10 @@ int			check_three(t_stack** stack_a);
 /* error_handling */
 /* ************** */
 
-void		invalid_command(void);
+void		invalid_command(t_stack** stack_a, t_stack** stack_b);
 void		is_duplicate(t_stack** stack_a);
-void		is_integer(char *str);
+void		is_integer(char *str, t_stack** stack_a);
+void		free_stack(t_stack** stack);
 
 /* ********* */
 /* push_swap */

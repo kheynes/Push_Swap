@@ -55,7 +55,7 @@ void	make_stack(t_stack** stack, char **str)
 	i = len - 1;
 	while(i >= 0)
 	{
-		is_integer(array[i]);
+		is_integer(array[i], stack);
 		push(stack, ft_atoi(array[i]));
 		i--;
 	}
@@ -87,7 +87,7 @@ void	perform_op(char **line, t_stack** stack_a, t_stack** stack_b)
 		else if (ft_strequ(*line, "rrr"))
 			reverse_rotate_both(stack_a, stack_b);	
 		else 
-			invalid_command();
+			invalid_command(stack_a, stack_b);
 		
 		print_stack(*stack_a);
 		ft_putstr("---\n");

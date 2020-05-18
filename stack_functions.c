@@ -60,6 +60,14 @@ int		size(t_stack **root)
 	return(i);
 }
 
+void        free_stack(t_stack** stack)
+{
+    while(size(stack) > 0)
+    {
+        pop(stack);
+    }
+}
+
 void        print_stack(t_stack* root)
 {
     t_stack* currentNode = root;

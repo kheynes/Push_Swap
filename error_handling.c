@@ -12,13 +12,15 @@
 
 #include "push_swap.h"
 
-void	invalid_command(void) //add stacks to free before exit
+void	invalid_command(t_stack** stack_a, t_stack** stack_b)
 {
 	ft_putstr_fd("\033[0;31mError\n\033[0m", 2);
+	free_stack(stack_a);
+	free_stack(stack_b);
 	exit(1);
 }
 
-void	is_duplicate(t_stack** stack_a) //free stack_a
+void	is_duplicate(t_stack** stack_a)
 {
 	t_stack*	temp;
 
@@ -31,13 +33,14 @@ void	is_duplicate(t_stack** stack_a) //free stack_a
 		else
 		{
 			ft_putstr_fd("\033[0;31mError\n\033[0m", 2);
+			free_stack(stack_a);
 			exit(1);
 		}
 	}
 	return ;
 }
 
-void	is_integer(char *str) //free stack before exiting
+void	is_integer(char *str, t_stack** stack_a)
 {
 	char	*arr;
 	char	*temp;
@@ -49,13 +52,14 @@ void	is_integer(char *str) //free stack before exiting
 
 	if (ft_strequ(temp, arr))
 	{
-		return ;
 		free(temp);
+		return ;
 	}
 	else
 	{
 		ft_putstr_fd("\033[0;31mError\n\033[0m", 2);
 		free(temp);
+		free_stack(stack_a);
 		exit(1);
 	}
 }

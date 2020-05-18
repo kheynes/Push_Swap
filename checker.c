@@ -28,14 +28,16 @@ int		main(int ac, char **av)
 	
 	make_stack(&stack_a, &av[1]);
 	is_duplicate(&stack_a);
-	print_stack(stack_a);
 
 	while ((get_next_line(fd, line)) > 0)
 	{
 		perform_op(line, &stack_a, &stack_b);
+		ft_strdel(line);
 	}
 
 	run_check(&stack_a, &stack_b);
 
+	free_stack(&stack_a);
+	free_stack(&stack_b);
 	return 0;
 }
