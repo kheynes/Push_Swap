@@ -31,14 +31,14 @@ int     main(int ac, char **av)
 
     make_stack(&stack_a, &av[1]);
     is_duplicate(&stack_a);
+    if (check_stack(&stack_a, &stack_b))
+        exit(1);
+    if (size(&stack_a) <= 3)
+        sort_three(&stack_a, &stack_b);
+    if(size(&stack_a) <= 5)
+        sort_five(&stack_a, &stack_b);
+    
     print_stack(stack_a);
-    ft_putstr("---\n");
-
-    run_operation("sa", &stack_a, &stack_b);
-    run_operation("ra", &stack_a, &stack_b);
-
-    print_stack(stack_a);
-
 
     return(0);
 }

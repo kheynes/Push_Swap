@@ -30,7 +30,6 @@ int		main(int ac, char **av)
 	is_duplicate(&stack_a);
 	print_stack(stack_a);
 
-	// line = ft_memalloc(sizeof(char **));
 	while ((get_next_line(fd, line)) > 0)
 	{
 		perform_op(line, &stack_a, &stack_b);

@@ -14,16 +14,20 @@
 
 int		check_stack(t_stack** stack_a, t_stack** stack_b)
 {
+    t_stack*	temp;
+
+	temp = *stack_a;
+
 	if (size(stack_b) > 0)
 	{
 		return(0);
 	}
 	else
 	{
-		while ((*stack_a)->next != NULL)
+		while (temp->next != NULL)
 		{
-			if ((*stack_a)->next->data > (*stack_a)->data)
-				*stack_a = (*stack_a)->next;
+			if (temp->next->data > temp->data)
+				temp = temp->next;
 			else
 			{
 				return(0);
@@ -37,15 +41,23 @@ void	make_stack(t_stack** stack, char **str)
 {
 	char	**array;
 	int		i;
+	int		len;
 
 	array = ft_strsplit(*str, ' ');
 	i = 0;
+	len = 0;
 
-	while(array[i])
+	while(array[len])
+	{
+		len++;
+	}
+	
+	i = len - 1;
+	while(i >= 0)
 	{
 		is_integer(array[i]);
 		push(stack, ft_atoi(array[i]));
-		i++;
+		i--;
 	}
 
 }
@@ -88,4 +100,21 @@ void	run_check(t_stack** stack_a, t_stack** stack_b)
 		ft_putstr("\033[1;32mOK\n\033[0m");
 	else if (!(check_stack(stack_a, stack_b)))
 		ft_putstr("\033[0;31mKO\n\033[0m");
+}
+
+int		check_three(t_stack** stack_a)
+{
+	t_stack*	temp;
+
+	temp = *stack_a;
+	while (temp->next != NULL)
+	{
+		if (temp->next->data > temp->data)
+			temp = temp->next;
+		else
+		{
+			return(0);
+		}
+	}
+	return(1);
 }

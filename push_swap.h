@@ -53,6 +53,7 @@ int			check_stack(t_stack** stack_a, t_stack** stack_b);
 void		make_stack(t_stack** stack, char **str);
 void		perform_op(char **line, t_stack** stack_a, t_stack** stack_b);
 void		run_check(t_stack** stack_a, t_stack** stack_b);
+int			check_three(t_stack** stack_a);
 
 /* ************** */ 
 /* error_handling */
@@ -67,5 +68,14 @@ void		is_integer(char *str);
 /* ********* */
 
 void		run_operation(char *str, t_stack** stack_a, t_stack** stack_b);
+
+/* ********* */
+/* algorithm */
+/* ********* */
+
+int			largest(t_stack** stack);
+int			smallest(t_stack** stack);
+void		sort_three(t_stack** stack_a, t_stack** stack_b);
+void		sort_five(t_stack** stack_a, t_stack** stack_b);
 
 #endif
