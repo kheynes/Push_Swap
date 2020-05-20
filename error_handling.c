@@ -40,7 +40,7 @@ void	is_duplicate(t_stack** stack_a)
 	return ;
 }
 
-void	is_integer(char *str, t_stack** stack_a)
+void	is_integer(char *str, t_stack** stack_a, char **array, int ac)
 {
 	char	*arr;
 	char	*temp;
@@ -60,6 +60,8 @@ void	is_integer(char *str, t_stack** stack_a)
 		ft_putstr_fd("\033[0;31mError\n\033[0m", 2);
 		free(temp);
 		free_stack(stack_a);
+		if(ac == 2)
+			free_array(array);
 		exit(1);
 	}
 }

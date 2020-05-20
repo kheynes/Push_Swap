@@ -67,3 +67,14 @@ void        free_stack(t_stack** stack)
         pop(stack);
     }
 }
+
+void        print_stack(t_stack* root)
+{
+    t_stack* currentNode = root;
+    while (currentNode != NULL)
+    {
+        ft_putnbr(currentNode->data);
+        ft_putstr("\n");
+        currentNode = currentNode->next;
+    }
+}

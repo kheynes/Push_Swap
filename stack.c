@@ -58,7 +58,7 @@ void	make_stack(t_stack** stack, char **str, int ac)
 	i = len - 1;
 	while(i >= 0)
 	{
-		is_integer(array[i], stack);
+		is_integer(array[i], stack, array, ac);
 		push(stack, ft_atoi(array[i]));
 		i--;
 	}
