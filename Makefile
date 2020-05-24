@@ -1,7 +1,7 @@
 PUSH_SWAP = push_swap
 CHECKER	= checker
 
-P_SRCS  = push_swap.c stack.c operations_one.c operations_two.c stack_functions.c error_handling.c algorithm.c
+P_SRCS  = push_swap.c stack.c operations_one.c operations_two.c stack_functions.c error_handling.c algorithm_one.c algorithm_two.c
 
 C_SRCS	= checker.c stack.c operations_one.c operations_two.c stack_functions.c error_handling.c
 

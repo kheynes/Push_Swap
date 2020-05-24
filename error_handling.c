@@ -12,11 +12,12 @@
 
 #include "push_swap.h"
 
-void	invalid_command(t_stack** stack_a, t_stack** stack_b)
+void	invalid_command(t_stack** stack_a, t_stack** stack_b, char **line)
 {
 	ft_putstr_fd("\033[0;31mError\n\033[0m", 2);
 	free_stack(stack_a);
 	free_stack(stack_b);
+	ft_strdel(line);
 	exit(1);
 }
 

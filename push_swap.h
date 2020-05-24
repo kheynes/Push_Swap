@@ -40,7 +40,7 @@ void		make_stack(t_stack** stack, char **str, int ac);
 void		perform_op(char **line, t_stack** stack_a, t_stack** stack_b);
 void		run_check(t_stack** stack_a, t_stack** stack_b);
 int			check_three(t_stack** stack_a);
-void		invalid_command(t_stack** stack_a, t_stack** stack_b);
+void		invalid_command(t_stack** stack_a, t_stack** stack_b, char **line);
 void		is_duplicate(t_stack** stack_a);
 void		is_integer(char *str, t_stack** stack_a, char ** array, int ac);
 void		free_array(char **array);
@@ -51,6 +51,8 @@ int			largest(t_stack** stack);
 int			smallest(t_stack** stack);
 void		sort_three(t_stack** stack_a, t_stack** stack_b);
 void		sort_five(t_stack** stack_a, t_stack** stack_b);
-void		print_stack(t_stack* root);
+void		sort_100(t_stack** stack_a, t_stack** stack_b);
+void		sort_500(t_stack** stack_a, t_stack** stack_b);
+void		sorted(t_stack** stack_a, t_stack** stack_b, int i);
 
 #endif

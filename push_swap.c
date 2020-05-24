@@ -60,14 +60,16 @@ int     main(int ac, char **av)
 	make_stack(&stack_a, av, ac);
 	is_duplicate(&stack_a);
 	norm(&stack_a, size(&stack_a));
-	
 	if (check_stack(&stack_a, &stack_b))
 		exit(1);
 	if (size(&stack_a) <= 3)
 		sort_three(&stack_a, &stack_b);
-	if(size(&stack_a) <= 500)
+	if(size(&stack_a) <= 5)
 		sort_five(&stack_a, &stack_b);
-	
+	if(size(&stack_a) <= 100)
+		sort_100(&stack_a, &stack_b);
+	if(size(&stack_a) <= 500)
+		sort_500(&stack_a, &stack_b);
 	free_stack(&stack_a);
 	free_stack(&stack_b);
 
