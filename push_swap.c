@@ -64,11 +64,11 @@ int     main(int ac, char **av)
 		exit(1);
 	if (size(&stack_a) <= 3)
 		sort_three(&stack_a, &stack_b);
-	if(size(&stack_a) <= 5)
+	else if(size(&stack_a) <= 5)
 		sort_five(&stack_a, &stack_b);
-	if(size(&stack_a) <= 100)
+	else if(size(&stack_a) <= 100)
 		sort_100(&stack_a, &stack_b);
-	if(size(&stack_a) <= 500)
+	else if(size(&stack_a) <= 500)
 		sort_500(&stack_a, &stack_b);
 	free_stack(&stack_a);
 	free_stack(&stack_b);
